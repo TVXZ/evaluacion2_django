@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import Estudiante
 
-# Register your models here.
+@admin.register(Estudiante)
+class EstudianteAdmin(admin.ModelAdmin):
+    list_display = ('rut', 'nombre', 'apellido', 'email', 'carrera', 'fecha_ingreso')
+    search_fields = ('rut', 'nombre', 'apellido', 'email')
+    list_filter = ('carrera',)
